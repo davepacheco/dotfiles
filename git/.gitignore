@@ -1,0 +1,6 @@
+*.pyc
+*.o
+.*.swp
+cscope.*
+build
+.lock-wscript
