@@ -9,8 +9,6 @@
 
 .DEFAULT_GOAL: all
 
-
-
 #
 # For each new set of dotfiles (a TARGET), you'll want to set:
 #
