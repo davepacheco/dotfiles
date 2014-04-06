@@ -1,4 +1,3 @@
-- add sharptooth customizations
 - add vimrc
 - add .ssh/config
 - add Makefile target to publish to Manta
