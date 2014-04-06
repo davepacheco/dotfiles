@@ -47,12 +47,23 @@ out/generic/%: force
 
 # Global configuration
 OUTDIR			 = out
+TARFILE			 = /tmp/dotfiles-bundle.tar
 
 # Targets
 all: $(ALLDOTFILES)
 
 clean:
-	rm -rf $(OUTDIR)
+	rm -rf $(OUTDIR) $(TARFILE)
+
+#
+# Publish dotfiles to /$MANTA_USER/public/lib/dotfiles
+#
+publish: $(TARFILE)
+	muntar -f $(TARFILE) /$$MANTA_USER/public/lib/dotfiles
+	rm -f $(TARFILE)
+
+$(TARFILE): $(ALLDOTFILES)
+	tar cf $@ -C out $(ALLDOTFILES:out/%=%)
 
 .PHONY: force
 force:

@@ -1,6 +1,5 @@
 - add vimrc
 - add .ssh/config
-- add Makefile target to publish to Manta
 - add script I can use to to fetch a set of configs from Manta and install them
   (ideally showing diffs first?)
 - add README
