@@ -27,19 +27,19 @@ DOTFILES_spike		 = .bashrc .bash_profile
 SOURCES_spike		 = base joyent
 ALLDOTFILES		+= $(DOTFILES_spike:%=$(OUTDIR)/spike/%)
 out/spike/%: force
-	./mkdotfile $* out/spike $(SOURCES_spike)
+	$(MKDOTFILE) $* out/spike $(SOURCES_spike)
 
 DOTFILES_sharptooth	 = .bashrc .bash_profile
 SOURCES_sharptooth	 = base joyent sharptooth
 ALLDOTFILES		+= $(DOTFILES_sharptooth:%=$(OUTDIR)/sharptooth/%)
 out/sharptooth/%: force
-	./mkdotfile $* out/sharptooth $(SOURCES_sharptooth)
+	$(MKDOTFILE) $* out/sharptooth $(SOURCES_sharptooth)
 
 DOTFILES_generic	 = .bashrc .bash_profile
 SOURCES_generic	 	 = base
 ALLDOTFILES		+= $(DOTFILES_generic:%=$(OUTDIR)/generic/%)
 out/generic/%: force
-	./mkdotfile $* out/generic $(SOURCES_generic)
+	$(MKDOTFILE) $* out/generic $(SOURCES_generic)
 
 #
 # You shouldn't need to modify anything below this line.
@@ -48,6 +48,7 @@ out/generic/%: force
 # Global configuration
 OUTDIR			 = out
 TARFILE			 = /tmp/dotfiles-bundle.tar
+MKDOTFILE		 = ./tools/mkdotfile
 
 # Targets
 all: $(ALLDOTFILES)
@@ -62,8 +63,11 @@ publish: $(TARFILE)
 	muntar -f $(TARFILE) /$$MANTA_USER/public/lib/dotfiles
 	rm -f $(TARFILE)
 
-$(TARFILE): $(ALLDOTFILES)
-	tar cf $@ -C out $(ALLDOTFILES:out/%=%)
+$(TARFILE): $(ALLDOTFILES) out/fetch-dotfiles
+	tar cf $@ -C out $(^:out/%=%)
+
+out/fetch-dotfiles: tools/fetch-dotfiles
+	cp $^ $@
 
 .PHONY: force
 force:
