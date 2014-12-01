@@ -12,6 +12,17 @@ export THOTH_USER=thoth
 export MORAY_URL=tcp://127.0.0.1:2020/
 
 #
+# Configure Manta environment variables for the staging Manta instance.
+#
+function staging()
+{
+	set -o xtrace
+	export MANTA_URL=https://172.26.5.11
+	export MANTA_TLS_INSECURE=1
+	set +o xtrace
+}
+
+#
 # Interactive behavior
 #
 if [[ -n $PS1 ]]; then
