@@ -1,0 +1,7 @@
+[user]
+	name = Dave Pacheco
+	email = dap@cs.brown.edu
+
+[core]
+	excludesfile = /Users/dap/.gitignore
+	pager = cat

@@ -23,13 +23,13 @@
 #
 #   - define a target as shown below, under Targets
 #
-DOTFILES_zathras	 = .bashrc .bash_profile
-SOURCES_zathras		 = base joyent
+DOTFILES_zathras	 = .bashrc .bash_profile .gitignore .gitconfig
+SOURCES_zathras		 = base joyent zathras
 ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
-DOTFILES_sharptooth	 = .bashrc .bash_profile
+DOTFILES_sharptooth	 = .bashrc .bash_profile .gitignore .gitconfig
 SOURCES_sharptooth	 = base joyent sharptooth
 ALLDOTFILES		+= $(DOTFILES_sharptooth:%=$(OUTDIR)/sharptooth/%)
 out/sharptooth/%: force
