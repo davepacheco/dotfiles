@@ -1,8 +1,8 @@
 #
 # On work dev systems, add marlin and manta tools to the PATH.
 #
-path_append $HOME/work/marlin/client/sbin
-path_append $HOME/work/marlin/node_modules/moray/bin
+path_append $HOME/work/manta-marlin/client/sbin
+path_append $HOME/work/manta-marlin/node_modules/moray/bin
 path_append $HOME/work/tools/node-manta/bin
 
 # On work systems, we always use thoth user "thoth".

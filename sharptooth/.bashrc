@@ -1,4 +1,20 @@
 #
+# Local boot2docker settings
+#
+export DOCKER_HOST=tcp://192.168.59.103:2375
+
+#
+# Configure Manta environment variables for the staging Manta instance.
+#
+function staging()
+{
+	set -o xtrace
+	export MANTA_URL=https://172.26.5.11
+	export MANTA_TLS_INSECURE=1
+	set +o xtrace
+}
+
+#
 # rbenv bullcrap (see rbenv init -)
 #
 export PATH="/Users/dap/.rbenv/shims:${PATH}"

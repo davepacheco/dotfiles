@@ -71,12 +71,25 @@ export SDC_KEY_ID=$MANTA_KEY_ID
 #
 # Interactive behavior
 #
+
 if [[ -n $PS1 ]]; then
 	#
 	# On supporting terminals, set TITLEBAR to a sequence that replaces the
 	# current title bar text with "<directory> (<host>)". We'll set the PS1
 	# prompt to include this string so that we always update the title bar
 	# with the current directory.
+	#
+	# For reference, the sequence used here is described in Appendix E of
+	# the "X Window System User's Guide" as the sequence for "Set Text
+	# Parameters".  The form for setting the window name and title to "text"
+	# is:
+	#
+	#     ESC "]0;" text BEL
+	#
+	# In this string, ESC and BEL are specified by ASCII number using octal
+	# escapes (\033 and \007, respectively).  The whole sequence should be
+	# enclosed with \[ and \], which indicates to bash that the enclosed
+	# characters should not be counted in determining the prompt's width.
 	#
 	case $TERM in
 	    rxvt*|xterm*|sun*)
