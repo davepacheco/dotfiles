@@ -63,8 +63,12 @@ publish: $(TARFILE)
 	muntar -f $(TARFILE) /$$MANTA_USER/public/lib/dotfiles
 	rm -f $(TARFILE)
 
+#
+# The COPYFILE_DISABLE prevents OS X tar from creating extra files for extended
+# attributes.
+#
 $(TARFILE): $(ALLDOTFILES) out/fetch-dotfiles
-	tar cf $@ -C out $(^:out/%=%)
+	COPYFILE_DISABLE=1 tar cf $@ -C out $(^:out/%=%)
 
 out/fetch-dotfiles: tools/fetch-dotfiles
 	cp $^ $@
