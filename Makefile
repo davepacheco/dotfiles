@@ -23,11 +23,11 @@
 #
 #   - define a target as shown below, under Targets
 #
-DOTFILES_spike		 = .bashrc .bash_profile
-SOURCES_spike		 = base joyent
-ALLDOTFILES		+= $(DOTFILES_spike:%=$(OUTDIR)/spike/%)
-out/spike/%: force
-	$(MKDOTFILE) $* out/spike $(SOURCES_spike)
+DOTFILES_zathras	 = .bashrc .bash_profile
+SOURCES_zathras		 = base joyent
+ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
+out/zathras/%: force
+	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
 DOTFILES_sharptooth	 = .bashrc .bash_profile
 SOURCES_sharptooth	 = base joyent sharptooth
