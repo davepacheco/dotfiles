@@ -1,6 +1,8 @@
 # dotfiles
 
 Lots of people have written tools to manage their dotfiles.  This one's mine.
+It's not written for anyone else, but you're welcome to try.
+
 The design principles are:
 
 * There are several different configurations: my home laptop, my work laptop,
