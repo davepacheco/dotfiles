@@ -17,8 +17,8 @@ export MORAY_URL=tcp://127.0.0.1:2020/
 function staging()
 {
 	set -o xtrace
-	export MANTA_URL=https://172.26.5.11
-	export MANTA_TLS_INSECURE=1
+	export MANTA_URL=https://manta.staging.joyent.us
+	export PS1="(STAGING MANTA) $PS1"
 	set +o xtrace
 }
 
