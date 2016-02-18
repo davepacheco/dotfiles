@@ -4,8 +4,6 @@
 # dotfiles consists of concatenating dotfiles from one of several source GROUPS
 # (e.g., "base", "work", "macos", and so on).
 #
-# You configure this by updating 
-#
 
 .DEFAULT_GOAL: all
 
@@ -34,6 +32,12 @@ SOURCES_sharptooth	 = base joyent sharptooth
 ALLDOTFILES		+= $(DOTFILES_sharptooth:%=$(OUTDIR)/sharptooth/%)
 out/sharptooth/%: force
 	$(MKDOTFILE) $* out/sharptooth $(SOURCES_sharptooth)
+
+DOTFILES_workdev	 = .bashrc .bash_profile .gitignore .gitconfig
+SOURCES_workdev          = base joyent workdev
+ALLDOTFILES		+= $(DOTFILES_workdev:%=$(OUTDIR)/workdev/%)
+out/workdev/%: force
+	$(MKDOTFILE) $* out/workdev $(SOURCES_generic)
 
 DOTFILES_generic	 = .bashrc .bash_profile
 SOURCES_generic	 	 = base
