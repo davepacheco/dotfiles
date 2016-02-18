@@ -95,6 +95,8 @@ mfind -t o "$df_mantaroot/$df_label" | sort | while read mantapath; do
 		diff "$localpath" "$relpath"
 		echo "$df_will take remote copy: $relpath" >&2
 	fi
+
+	echo
 done
 
 if [[ $df_dryrun = "true" ]]; then
