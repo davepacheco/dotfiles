@@ -33,6 +33,7 @@ export PATH=
 
 # Prefer my own versions of tools to copies installed elsewhere.
 path_append $HOME/bin
+path_append $HOME/install/node/bin
 path_append $HOME/install/bin
 
 # SmartOS pkgsrc
@@ -40,8 +41,8 @@ path_append /opt/local/bin
 path_append /opt/local/sbin
 
 # OS X pkgsrc
-path_append /usr/pkg/bin
-path_append /usr/pkg/sbin
+path_append /opt/pkg/sbin
+path_append /opt/pkg/bin
 
 # System tools
 path_append /bin
