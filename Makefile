@@ -27,8 +27,8 @@ ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
-DOTFILES_sharptooth	 = .bashrc .bash_profile .gitignore .gitconfig
-SOURCES_sharptooth	 = base joyent sharptooth
+DOTFILES_sharptooth	 = .bashrc .bash_profile .gitignore .gitconfig .ssh/config
+SOURCES_sharptooth	 = base joyent-provided joyent sharptooth
 ALLDOTFILES		+= $(DOTFILES_sharptooth:%=$(OUTDIR)/sharptooth/%)
 out/sharptooth/%: force
 	$(MKDOTFILE) $* out/sharptooth $(SOURCES_sharptooth)
