@@ -21,8 +21,8 @@
 #
 #   - define a target as shown below, under Targets
 #
-DOTFILES_zathras	 = .bashrc .bash_profile .gitignore .gitconfig
-SOURCES_zathras		 = base joyent zathras
+DOTFILES_zathras	 = .bashrc .bash_profile .gitignore .gitconfig .ssh/config
+SOURCES_zathras		 = base joyent-provided joyent zathras
 ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)

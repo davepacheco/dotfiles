@@ -1,0 +1,371 @@
+#
+# Universal parameters.  Always use a ServerAliveInterval of 300s to avoid NATs
+# dropping TCP state.
+#
+Host *
+	ServerAliveInterval 300
+
+Host *.dev *.gz
+	ForwardAgent yes
+
+Host *.gz
+	User root
+	CheckHostIP no
+	StrictHostKeyChecking no
+
+#
+# Personal network proxy (when connected to insecure networks)
+#
+Host proxy
+	HostName home.kartlytics.com
+	DynamicForward localhost:5055
+	ServerAliveInterval 30
+
+#
+# Production systems.
+#
+#   o Ops-managed systems use "dpacheco".
+#   o Engineering-managed systems use "root".
+#
+# We use the Control* directives to avoid having to authenticate each time.
+# Recall that the persistent connection will still be destroyed if the laptop
+# goes to sleep, changes networks, etc.
+#
+Host *.jpc *.spc
+	User dpacheco
+	ControlMaster auto
+	ControlPath "/tmp/ssh-c-%r@%h:%p"
+	ControlPersist yes
+	ForwardAgent yes
+
+Host eu-ams-1.jpc
+	User dpacheco
+	#HostName 37.153.102.10
+	HostName ams1-hn.int.joyent.us
+
+Host us-west-a.jpc
+	User dpacheco
+	#HostName 8.12.42.101
+	HostName westa-hn.int.joyent.us
+
+Host us-sw-1.jpc
+	User dpacheco
+	#HostName 199.192.240.5
+	HostName sw1-hn.int.joyent.us
+
+Host us-west-1.jpc
+	User dpacheco
+	#HostName 8.19.32.5
+	HostName west1-hn.int.joyent.us
+
+Host us-east-1.jpc
+	User dpacheco
+	#HostName 165.225.134.10
+	HostName east1-hn.int.joyent.us
+
+Host us-east-2.jpc
+	User dpacheco
+	#HostName 165.225.164.4
+	HostName east2-hn.int.joyent.us
+
+Host us-east-3.jpc
+	User dpacheco
+	#HostName 165.225.172.4
+	HostName east3-hn.int.joyent.us
+
+# Tunnels for production systems
+Host us-east-tunnels.jpc
+	User dpacheco
+	#HostName 165.225.164.4
+	HostName east2-hn.int.joyent.us
+	# 1.moray (for Marlin tools)
+	LocalForward 2020 10.9.0.159:2020
+	LocalForward 5290 10.9.0.109:8080
+	# adminui
+	LocalForward 4443 10.9.0.27:443
+	# marlin dashboard
+	LocalForward 8080 10.9.0.175:80
+	# graphite server
+	LocalForward 8090 10.9.0.160:80
+	# manowar (graphing dashboard)
+	LocalForward 4444 10.9.0.151:80
+
+Host us-east-secondary-marlin.jpc
+	User dpacheco
+	#HostName 165.225.134.10
+	HostName east1-hn.int.joyent.us
+	# secondary marlin dashboard
+	LocalForward 8081 10.0.130.204:80
+
+Host madtom.jpc
+	User dpacheco
+	#HostName 165.225.172.4
+	HostName east3-hn.int.joyent.us
+	LocalForward 5555 10.10.0.108:80
+
+Host us-east-1-ca-tunnel.jpc
+	User dpacheco
+	#HostName 165.225.134.10
+	HostName east1-hn.int.joyent.us
+	LocalForward 23182 10.0.128.15:23181
+
+Host us-east-3-ca-tunnel.jpc
+	User dpacheco
+	#HostName 165.225.172.4
+	HostName east3-hn.int.joyent.us
+	LocalForward 23181 10.10.0.26:23181
+
+Host us-east-3-adminui-tunnel.jpc
+	User dpacheco
+	#HostName 165.225.172.4
+	HostName east3-hn.int.joyent.us
+	ServerAliveInterval 300
+	LocalForward 4444 10.10.0.27:443
+
+Host us-beta-3.jpc
+	User root
+	Hostname 165.225.142.4
+
+Host us-beta-4.jpc
+	User root
+	Hostname 165.225.142.132
+
+Host us-east-3b.jpc
+	User dpacheco
+	Hostname east3b-hn.int.joyent.us
+
+#
+# The "pub" tunnels make the port accessible on the local network, instead of
+# just the loopback interface.  This is used for devices in the Joyent office.
+#
+Host marlin-pub.jpc
+	User root
+	#HostName 165.225.164.4
+	HostName east1-hn.int.joyent.us
+	# XXX This is probably outdated.
+	LocalForward *:8081 10.9.0.175:80
+
+Host madtom-pub.jpc
+	User dpacheco
+	#HostName 165.225.172.4
+	HostName east3-hn.int.joyent.us
+	LocalForward *:8082 10.10.0.108:80
+#
+# Development hosts
+#
+Host coal.gz
+	HostName 10.99.99.7
+
+Host coal.dev
+	HostName 10.88.88.3
+
+Host sf1.gz
+	HostName 172.21.129.4
+
+Host sf1.dev
+	HostName 172.21.129.12
+
+Host emy10.gz
+	HostName 172.26.10.4
+
+Host emy10.dev
+	HostName 172.26.10.14
+
+Host dapvm.gz
+	HostName 172.26.19.100
+
+Host manatee.dev
+	HostName 172.21.129.17
+
+#Host sfdevel.dev
+#	HostName 172.20.3.7
+#	CheckHostIP no
+#	StrictHostKeyChecking no
+
+# multiarch 13.3.0 zone that JohnS created for OS and general dev.
+Host jpc-1330-multi.dev platform.dev
+	HostName 165.225.145.120
+
+# smartos 13.3.1 image for general work.
+Host jpc-1331.dev
+	HostName 165.225.148.87
+
+Host jpc-haproxy.dev
+	HostName 165.225.151.51
+
+# multiarch 13.3.1 zone in JPC (matches manatee image)
+Host jpc-1331-multi.dev
+	HostName 165.225.151.88
+
+# VM dev environment hypervisors (athena and zeus)
+
+Host athena
+        Hostname 172.26.19.3
+        User root
+
+Host zeus
+        Hostname 172.26.19.6
+        User root
+
+#
+# Samsung PoC config
+#
+Host samhn
+        User root
+        Hostname 43.243.218.194
+        Port 22022
+        ServerAliveInterval 15
+	ForwardAgent yes
+
+Host samtunnels
+        User root
+        Hostname 43.243.218.194
+        Port 22022
+        ServerAliveInterval 15
+        # adminui
+        LocalForward 30001 172.16.0.34:443
+        # madtom dashboard
+        LocalForward 30002 172.16.3.94:80
+        # marlin dashboard
+        LocalForward 30003 172.16.3.95:80
+	# cosbench portal
+	LocalForward 30004 172.16.10.160:19088
+
+Host samjump-quanta
+        User root
+        Hostname 69.167.103.230
+        Port 22022
+        ServerAliveInterval 15
+
+Host samjump-dell
+        User root
+        Hostname 43.243.218.195
+        Port 22022
+        ServerAliveInterval 15
+
+#
+# Configurations for opening up tunnels home for remote access.
+#
+Host startvnc
+	HostName home.kartlytics.com
+	RemoteForward *:5930 localhost:5900
+
+Host startssh
+	HostName home.kartlytics.com
+	RemoteForward *:2200 localhost:22
+
+#
+# Staging systems
+#
+Host staging-1.gz
+        User root
+        Hostname 172.26.3.4
+
+Host staging-2.gz
+        User root
+        Hostname 172.26.4.4
+
+Host staging-3.gz
+        User root
+        Hostname 172.26.5.4
+
+Host staging-tunnels.gz
+        User root
+        Hostname 172.26.5.4
+        # marlin dashboard
+        LocalForward 10080 172.25.5.54:80
+        # madtom dashboard
+        LocalForward 10081 172.25.5.53:80
+
+#
+# Lab access: the SF lobby system is a bastion host for the SF lab.  It
+# shouldn't be needed with the use of the Emeryville VPN target, but I'm leaving
+# it here in case it's ever needed.  There are both internal and external
+# addresses for it.
+#
+Host sflobby
+	Hostname 172.20.0.40
+	ForwardAgent yes
+
+Host sflobby-ext
+        Hostname 8.19.34.211
+        Port 12345
+        HostKeyAlias lobby0
+	ForwardAgent yes
+
+# molybdenum (mo.joyent.com)
+Host mo
+	User root
+	Hostname 8.19.35.27
+	ForwardAgent yes
+
+# sharptooth on VPN
+Host sharptooth
+	Hostname sharptooth.kartlytics.com
+	ForwardAgent yes
+
+# SmartOS GZ
+Host wendell.gz
+	HostName 192.168.10.128
+
+# Dev zone in SmartOS VM
+Host wendell.dev
+	HostName 192.168.10.129
+
+# JOD Ubuntu 14.04.3 VM
+Host jod-ubuntu
+	HostName 192.168.10.131
+
+#
+# Personal DNS servers
+#
+Host prod-dns-west
+	ForwardAgent yes
+	HostName prod-dns-west.inst.ddb63097-4093-4a74-b8e8-56b23eb253e0.us-west-1.triton.zone
+
+Host prod-dns-east
+	ForwardAgent yes
+	HostName prod-dns-east.inst.ddb63097-4093-4a74-b8e8-56b23eb253e0.us-east-1.triton.zone
+
+#
+# Samsung Private Cloud hosts
+#
+Host east1a.spc
+        Hostname 10.64.0.20
+
+Host east1b.spc
+        Hostname 10.65.0.20
+
+Host east1c.spc
+        Hostname 10.66.0.20
+
+Host spc-east-tunnels.spc
+        Hostname 10.66.0.20
+        # marlin-dashboard
+        LocalForward 40001 10.66.2.129:80
+        # madtom
+        LocalForward 40002 10.66.2.115:80
+
+Host eucentral1a.spc
+        # Hostname 10.72.0.20
+        Hostname central1a-hn.scloud.host
+
+Host eucentral1b.spc
+        # Hostname 10.73.0.20
+        Hostname central1b-hn.scloud.host
+
+Host eucentral1c.spc
+        # Hostname 10.74.0.20
+        Hostname central1c-hn.scloud.host
+
+Host southeast1a.spc
+        Hostname southeast1a-hn.scloud.host
+
+Host southeast1b.spc
+        Hostname southeast1b-hn.scloud.host
+
+Host southeast1c.spc
+        Hostname southeast1c-hn.scloud.host
+
+Host staging.spc
+	Hostname 10.67.0.20
