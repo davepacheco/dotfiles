@@ -1,0 +1,10 @@
+[user]
+	name = David Pacheco
+	email = dap@joyent.com
+
+[core]
+	excludesfile = /Users/dap/.gitignore
+	pager = cat
+
+[branch]
+	autosetuprebase = always

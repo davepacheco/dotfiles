@@ -33,6 +33,12 @@ ALLDOTFILES		+= $(DOTFILES_sharptooth:%=$(OUTDIR)/sharptooth/%)
 out/sharptooth/%: force
 	$(MKDOTFILE) $* out/sharptooth $(SOURCES_sharptooth)
 
+DOTFILES_blinky		 = .bashrc .bash_profile .gitignore .gitconfig .ssh/config
+SOURCES_blinky		 = base joyent-provided joyent blinky
+ALLDOTFILES		+= $(DOTFILES_blinky:%=$(OUTDIR)/blinky/%)
+out/blinky/%: force
+	$(MKDOTFILE) $* out/blinky $(SOURCES_blinky)
+
 DOTFILES_workdev	 = .bashrc .bash_profile .gitignore .gitconfig
 SOURCES_workdev          = base joyent workdev
 ALLDOTFILES		+= $(DOTFILES_workdev:%=$(OUTDIR)/workdev/%)
