@@ -35,6 +35,7 @@ export PATH=
 path_append $HOME/bin
 path_append $HOME/install/node/bin
 path_append $HOME/install/bin
+path_append $HOME/.cargo/bin
 
 # SmartOS pkgsrc
 path_append /opt/local/bin

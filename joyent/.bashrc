@@ -18,9 +18,54 @@ function staging()
 {
 	set -o xtrace
 	export MANTA_URL=https://manta.staging.joyent.us
-	export PS1="(STAGING MANTA) $PS1"
+	export PS1="[STAGING] $PS1"
 	set +o xtrace
 }
+
+#
+# Configure Manta environment variables for the SPC us-east instance.
+#
+function spceast()
+{
+	set -o xtrace
+	export MANTA_URL=https://us-east.manta.samsungcloud.io
+	export PS1="[SPC EAST] $PS1"
+	set +o xtrace
+}
+
+#
+# Configure Manta environment variables for the SPC eu-central instance.
+#
+function spccentral()
+{
+	set -o xtrace
+	export MANTA_URL=https://eu-central.manta.samsungcloud.io
+	export PS1="[CENTRAL] $PS1"
+	set +o xtrace
+}
+
+#
+# Configure Manta environment variables for the SPC ap-southeast instance.
+#
+function spcsoutheast()
+{
+	set -o xtrace
+	export MANTA_URL=https://ap-southeast.manta.samsungcloud.io
+	export PS1="[SOUTHEAST] $PS1"
+	set +o xtrace
+}
+
+#
+# Configure Manta environment variables for the SPC ap-northeast instance.
+#
+function spcnortheast()
+{
+	set -o xtrace
+	export MANTA_URL=https://ap-northeast.manta.samsungcloud.io
+	export PS1="[NORTHEAST] $PS1"
+	set +o xtrace
+}
+
 
 #
 # Interactive behavior
