@@ -1,0 +1,10 @@
+[user]
+	name = David Pacheco
+	email = dap@cs.brown.edu
+
+[core]
+	excludesfile = /home/dap/.gitignore
+	pager = cat
+
+[branch]
+	autosetuprebase = always
