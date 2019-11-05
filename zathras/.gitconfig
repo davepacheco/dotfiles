@@ -5,3 +5,6 @@
 [core]
 	excludesfile = /Users/dap/.gitignore
 	pager = cat
+
+[branch]
+	autosetuprebase = always
