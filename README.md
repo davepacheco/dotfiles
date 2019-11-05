@@ -40,24 +40,3 @@ we do it by combining the fragments from the "base" and "joyent" configurations.
 When you type "make", the dotfiles for each configuration are built from the
 various fragments, as configured in the Makefile.  The outputs go into
 "out/$config\_name" in the root of the repository.
-
-
-## Getting dotfiles onto machines
-
-1. Type `make publish` to publish the dotfiles to Joyent's [Manta Storage
-   Service](https://apidocs.joyent.com/manta/).
-2. Get the ./tools/fetch-dotfiles" command onto the machine you want to deploy
-   dotfiles onto and run it as:
-
-       ./fetch-dotfiles LABEL
-
-   where LABEL is the name of one of your configurations.  If you run *without*
-   "-f", it does a dry run, which shows you what will be changed (i.e., diffs
-   between your current dotfiles and what's been published).  If you're happy
-   with it, run it again with "-f".
-
-   You can also specify a different local directory to use (other than $HOME)
-   using -L.  This is useful for testing.
-
-   If you're trusting, you can use the Github URL for fetch-dotfiles and run
-   it directly.

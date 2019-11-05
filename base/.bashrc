@@ -33,9 +33,8 @@ export PATH=
 
 # Prefer my own versions of tools to copies installed elsewhere.
 path_append $HOME/bin
-path_append $HOME/install/node/bin
 path_append $HOME/install/bin
-path_append $HOME/.cargo/bin
+path_append $HOME/install/node/bin
 
 # SmartOS pkgsrc
 path_append /opt/local/bin
@@ -55,6 +54,14 @@ path_append /usr/sbin
 path_append /usr/local/bin
 path_append /usr/local/sbin
 
+# Rust installation
+if [[ -d "$HOME/.cargo" && -f "$HOME/.cargo/env" ]]; then
+	source $HOME/.cargo/env
+fi
+
+# pip-installed tools (Python)
+# (currently used only for AWS CLI)
+path_append "$HOME/Library/Python/2.7/bin"
 
 #
 # Non-interactive command customizations
@@ -62,13 +69,6 @@ path_append /usr/local/sbin
 export TZ=US/Pacific		# San Francisco
 export MACHINE_THAT_GOES_PING=1	# use "ping -s" by default
 export BUNYAN_NO_PAGER=1	# don't page by default
-
-export MANTA_URL=https://us-east.manta.joyent.com
-export MANTA_USER=dap
-export MANTA_KEY_ID="56:f3:e1:56:3d:e6:f7:83:a9:ce:19:5d:62:ba:5c:1f"
-export SDC_URL=https://us-west-1.api.joyentcloud.com
-export SDC_ACCOUNT=$MANTA_USER
-export SDC_KEY_ID=$MANTA_KEY_ID
 
 #
 # Interactive behavior
