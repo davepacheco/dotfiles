@@ -71,6 +71,12 @@ export MACHINE_THAT_GOES_PING=1	# use "ping -s" by default
 export BUNYAN_NO_PAGER=1	# don't page by default
 
 #
+# Silence Apple's notice about bash being deprecated.  See
+# https://support.apple.com/en-us/HT208050.
+#
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+#
 # Interactive behavior
 #
 
