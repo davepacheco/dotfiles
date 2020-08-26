@@ -123,7 +123,7 @@ if [[ -n $PS1 ]]; then
 	
 	export EDITOR=vim		# use 'vim' to edit
 	export VISUAL=vim		# use 'vim' to edit
-	export PAGER=less		# use 'less' to page
+	export PAGER="less -X"		# use 'less' to page
 	export LESS='-P ?f%f .line %lb/%L .byte %bB?s/%s. ?e(END):?pB%pB\%..%t'
 	export CSCOPEOPTIONS="-r -p8"	# show more results per page
 
