@@ -59,10 +59,6 @@ if [[ -d "$HOME/.cargo" && -f "$HOME/.cargo/env" ]]; then
 	source $HOME/.cargo/env
 fi
 
-# pip-installed tools (Python)
-# (currently used only for AWS CLI)
-path_append "$HOME/Library/Python/2.7/bin"
-
 #
 # Non-interactive command customizations
 #
