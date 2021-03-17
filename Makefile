@@ -29,6 +29,13 @@ ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
+# "vir" is a Helios development VM on "zathras"
+DOTFILES_vir	 	 = .bashrc .bash_profile .gitignore .gitconfig
+SOURCES_vir		 = base vir
+ALLDOTFILES		+= $(DOTFILES_vir:%=$(OUTDIR)/vir/%)
+out/vir/%: force
+	$(MKDOTFILE) $* out/vir $(SOURCES_vir)
+
 #
 # "generic" is a general-purpose target that might be useful for random machines
 # I want to copy a bashrc to.
