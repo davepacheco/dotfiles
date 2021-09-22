@@ -1,0 +1,3 @@
+# Bind ^W to delete the previous word (like readline) instead of the whole line
+# (like editline's default).
+bind "^W" ed-delete-prev-word
