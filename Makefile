@@ -29,12 +29,12 @@ ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
-# "vir" is a Helios development VM on "zathras"
-DOTFILES_vir	 	 = .bashrc .bash_profile .editrc .gitignore .gitconfig
-SOURCES_vir		 = base vir
-ALLDOTFILES		+= $(DOTFILES_vir:%=$(OUTDIR)/vir/%)
-out/vir/%: force
-	$(MKDOTFILE) $* out/vir $(SOURCES_vir)
+# "ivanova" is a Helios development machine
+DOTFILES_ivanova	 = .bashrc .bash_profile .editrc .gitignore .gitconfig
+SOURCES_ivanova		 = base ivanova
+ALLDOTFILES		+= $(DOTFILES_ivanova:%=$(OUTDIR)/ivanova/%)
+out/ivanova/%: force
+	$(MKDOTFILE) $* out/ivanova $(SOURCES_ivanova)
 
 #
 # "generic" is a general-purpose target that might be useful for random machines
