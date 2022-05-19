@@ -8,3 +8,6 @@
 
 [branch]
 	autosetuprebase = always
+
+[merge]
+	conflictstyle = "diff3"
