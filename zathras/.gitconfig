@@ -2,6 +2,9 @@
 	name = David Pacheco
 	email = dap@cs.brown.edu
 
+[includeIf "gitdir:~/oxide/"]
+	path = ~/oxide/.gitconfig
+
 [core]
 	excludesfile = /Users/dap/.gitignore
 	pager = cat
