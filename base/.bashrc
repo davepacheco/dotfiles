@@ -36,23 +36,19 @@ path_append $HOME/bin
 path_append $HOME/install/bin
 path_append $HOME/install/node/bin
 
-# SmartOS pkgsrc
+# Locally installed tools
+path_append /usr/local/bin
+path_append /usr/local/sbin
+
+# illumos packages
 path_append /opt/local/bin
 path_append /opt/local/sbin
-
-# OS X pkgsrc
-path_append /opt/pkg/sbin
-path_append /opt/pkg/bin
 
 # System tools
 path_append /bin
 path_append /sbin
 path_append /usr/bin
 path_append /usr/sbin
-
-# Locally installed tools
-path_append /usr/local/bin
-path_append /usr/local/sbin
 
 # Rust installation
 if [[ -d "$HOME/.cargo" && -f "$HOME/.cargo/env" ]]; then
@@ -145,4 +141,7 @@ if [[ -n $PS1 ]]; then
 		# older Solaris
 		alias ls="ls -lHF"
 	fi
+
+	# bat(1) CLI tool config (https://github.com/sharkdp/bat)
+	export BAT_THEME=ansi
 fi
