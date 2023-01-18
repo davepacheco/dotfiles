@@ -44,6 +44,10 @@ path_append /usr/local/sbin
 path_append /opt/local/bin
 path_append /opt/local/sbin
 
+# OS X pkgsrc
+path_append /opt/pkg/sbin
+path_append /opt/pkg/bin
+
 # System tools
 path_append /bin
 path_append /sbin
