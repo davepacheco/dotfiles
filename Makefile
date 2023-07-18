@@ -46,13 +46,6 @@ ALLDOTFILES		+= $(DOTFILES_generic:%=$(OUTDIR)/generic/%)
 out/generic/%: force
 	$(MKDOTFILE) $* out/generic $(SOURCES_generic)
 
-# "awsdns" is for my personal DNS servers hosted on AWS.
-DOTFILES_awsdns		 = .bashrc .bash_profile .editrc .gitignore .gitconfig
-SOURCES_awsdns		 = base awsdns
-ALLDOTFILES		+= $(DOTFILES_awsdns:%=$(OUTDIR)/awsdns/%)
-out/awsdns/%: force
-	$(MKDOTFILE) $* out/awsdns $(SOURCES_awsdns)
-
 #
 # You shouldn't need to modify anything below this line.
 #
