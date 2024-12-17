@@ -17,3 +17,7 @@
 
 [init]
 	defaultBranch = main
+
+# ssh is needed instead of HTTPS to clone some private Oxide repos.
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/
