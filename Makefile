@@ -30,7 +30,7 @@ out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
 # "ivanova" is a Helios development machine
-DOTFILES_ivanova	 = .bashrc .bash_profile .editrc .gitignore .gitconfig
+DOTFILES_ivanova	 = .bashrc .bash_profile .editrc .gitignore .gitconfig .ssh/config
 SOURCES_ivanova		 = base oxide ivanova
 ALLDOTFILES		+= $(DOTFILES_ivanova:%=$(OUTDIR)/ivanova/%)
 out/ivanova/%: force
