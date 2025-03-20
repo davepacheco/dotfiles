@@ -24,14 +24,14 @@
 
 # "zathras" is my personal laptop
 DOTFILES_zathras	 = .bashrc .bash_profile .editrc .gitignore .gitconfig .ssh/config
-SOURCES_zathras		 = base zathras
+SOURCES_zathras		 = base oxide zathras
 ALLDOTFILES		+= $(DOTFILES_zathras:%=$(OUTDIR)/zathras/%)
 out/zathras/%: force
 	$(MKDOTFILE) $* out/zathras $(SOURCES_zathras)
 
 # "ivanova" is a Helios development machine
 DOTFILES_ivanova	 = .bashrc .bash_profile .editrc .gitignore .gitconfig
-SOURCES_ivanova		 = base ivanova
+SOURCES_ivanova		 = base oxide ivanova
 ALLDOTFILES		+= $(DOTFILES_ivanova:%=$(OUTDIR)/ivanova/%)
 out/ivanova/%: force
 	$(MKDOTFILE) $* out/ivanova $(SOURCES_ivanova)
