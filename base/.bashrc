@@ -44,9 +44,14 @@ path_append /usr/local/sbin
 path_append /opt/local/bin
 path_append /opt/local/sbin
 
-# OS X pkgsrc
-path_append /opt/pkg/sbin
-path_append /opt/pkg/bin
+# MacOS Homebrew (Apple Silicon)
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+path_append "$HOMEBREW_PREFIX/bin"
+path_append "$HOMEBREW_PREFIX/sbin"
+[[ -z "${MANPATH-}" ]] || export MANPATH=":${MANPATH#:}";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
 # System tools
 path_append /bin
