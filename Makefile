@@ -36,6 +36,13 @@ ALLDOTFILES		+= $(DOTFILES_ivanova:%=$(OUTDIR)/ivanova/%)
 out/ivanova/%: force
 	$(MKDOTFILE) $* out/ivanova $(SOURCES_ivanova)
 
+# "ivanova-claude" is the Claude user on ivanova
+DOTFILES_ivanova_claude	 = $(DOTFILES_ivanova)
+SOURCES_ivanova_claude	 = $(SOURCES_ivanova) ivanova_claude
+ALLDOTFILES		+= $(DOTFILES_ivanova_claude:%=$(OUTDIR)/ivanova_claude/%)
+out/ivanova_claude/%: force
+	$(MKDOTFILE) $* out/ivanova_claude $(SOURCES_ivanova_claude)
+
 #
 # "generic" is a general-purpose target that might be useful for random machines
 # I want to copy a bashrc to.

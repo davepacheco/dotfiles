@@ -10,6 +10,9 @@ path_append /home/dap/.node_modules/bin
 # Put temporary files into /danger_zone so they don't use physical memory and
 # also don't block on synchronous writes.  This is obviously super dangerous for
 # anything that needs to be crash-safe.
-export TMPDIR=/dangerzone/omicron_tmp
+export TMPDIR=/dangerzone/${LOGNAME}_tmp
 
 source $HOME/.cargo/env
+
+# for sharing with Claude
+umask 002

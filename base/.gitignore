@@ -2,3 +2,7 @@
 .DS_Store
 rusty-tags.vi
 dap-notes.adoc
+.claude/settings.local.json
+# Customized "target" directory for the environment where I share the target
+# directory between Unix users.
+target-claude
